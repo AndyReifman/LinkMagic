@@ -64,6 +64,14 @@ export default class LinkAdderPlugin extends Plugin {
 			})
 	}
 
+	handleEnter(editor: Editor, pos?: EditorPosition) {
+		//Get the current line position
+		let curPos = pos ? pos : editor.getCursor()
+		//Don't think we need to check if we're on the first line as this should only be called after enter
+		let lineAbove = editor.getLine(curPos.line - 1)
+		this.checkForMatch(editor, { line: curPos.line - 1, ch: lineAbove.length })
+	}
+
 	triggerSnippet(editor: Editor, evt: KeyboardEvent) {
 		switch (evt.key) {
 			case " ": {
@@ -75,7 +83,7 @@ export default class LinkAdderPlugin extends Plugin {
 				break;
 			}
 			case "Enter": {
-				// TODO: Add support for Enter replacement
+				this.handleEnter(editor)
 				break;
 			}
 			default: {
