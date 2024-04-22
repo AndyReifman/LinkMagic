@@ -6,7 +6,7 @@ type PluginSettings = Record<string, { pattern: string, link: string }>;
 
 const DEFAULT_SETTINGS: PluginSettings = {};
 
-export default class LinkAdderPlugin extends Plugin {
+export default class MagicLinkPlugin extends Plugin {
 	settings: PluginSettings;
 
 	async onload() {
@@ -101,9 +101,9 @@ export default class LinkAdderPlugin extends Plugin {
 
 
 class SettingTab extends PluginSettingTab {
-	plugin: LinkAdderPlugin;
+	plugin: MagicLinkPlugin;
 
-	constructor(app: App, plugin: LinkAdderPlugin) {
+	constructor(app: App, plugin: MagicLinkPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -112,7 +112,7 @@ class SettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 
 		containerEl.empty();
-		containerEl.createEl("h2", { text: "Link Adder Settings" });
+		containerEl.createEl("h2", { text: "LinkMagic Settings" });
 
 		let settingName = ""
 		new Setting(containerEl)
