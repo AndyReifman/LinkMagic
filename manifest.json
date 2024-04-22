@@ -1,10 +1,9 @@
 {
-	"id": "linkmagic",
+	"id": "link-magic",
 	"name": "LinkMagic",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"minAppVersion": "0.15.0",
 	"description": "Automatically adds links to defined regex.",
 	"author": "Andrew Reifman",
-	"authorUrl": "https://github.com/AndyReifman/LinkMagic",
 	"isDesktopOnly": true
 }
