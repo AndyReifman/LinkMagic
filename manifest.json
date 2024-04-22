@@ -5,6 +5,6 @@
 	"minAppVersion": "0.15.0",
 	"description": "Automatically adds links to defined regex.",
 	"author": "Andrew Reifman",
-	"authorUrl": "https://github.com/AndyReifman/link-adder",
+	"authorUrl": "https://github.com/AndyReifman/LinkMagic",
 	"isDesktopOnly": true
 }
