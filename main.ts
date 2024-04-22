@@ -1,12 +1,11 @@
-import { App, Editor, EditorPosition, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, EditorPosition, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-// Remember to rename these classes and interfaces!
 
 type PluginSettings = Record<string, { pattern: string, link: string }>;
 
 const DEFAULT_SETTINGS: PluginSettings = {};
 
-export default class MagicLinkPlugin extends Plugin {
+export default class LinkMagicPlugin extends Plugin {
 	settings: PluginSettings;
 
 	async onload() {
@@ -101,9 +100,9 @@ export default class MagicLinkPlugin extends Plugin {
 
 
 class SettingTab extends PluginSettingTab {
-	plugin: MagicLinkPlugin;
+	plugin: LinkMagicPlugin;
 
-	constructor(app: App, plugin: MagicLinkPlugin) {
+	constructor(app: App, plugin: LinkMagicPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
