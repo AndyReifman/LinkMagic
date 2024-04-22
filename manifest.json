@@ -1,10 +1,10 @@
 {
 	"id": "Auto-Link-Adder",
 	"name": "Automatic Link Adder",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "Automatically adds links to defined regex.",
 	"author": "Andrew Reifman",
-	"authorUrl": "https://github.com/AndyReifman/Link-Replacer",
+	"authorUrl": "https://github.com/AndyReifman/link-adder",
 	"isDesktopOnly": true
 }
