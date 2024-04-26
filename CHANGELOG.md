@@ -1,3 +1,6 @@
+### 1.0.5 Apr 26, 2024
+ - Removed heading from Plugin settings page
+ - Removed unnecessary CSS code
 ### 1.0.4
  - Abstracting css out to styles.css
 ### 1.0.3
