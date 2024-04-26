@@ -9,7 +9,6 @@ export default class LinkMagicPlugin extends Plugin {
 	settings: PluginSettings;
 
 	async onload() {
-		console.log('Loading plugin')
 		await this.loadSettings();
 
 		this.addSettingTab(new SettingTab(this.app, this));
@@ -111,13 +110,11 @@ class SettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 
 		containerEl.empty();
-		containerEl.createEl("h2", { text: "LinkMagic Settings", cls: "default__margin" });
 
 		let settingName = ""
 		new Setting(containerEl)
 			.setName('Add a new rule')
 			.addText((text) => {
-				text.inputEl.classList.add("default__margin")
 				text.setPlaceholder("Rule Name").onChange((value) => {
 					settingName = value;
 				});
@@ -142,7 +139,6 @@ class SettingTab extends PluginSettingTab {
 			new Setting(containerEl)
 				.setName(key)
 				.addText((text) => {
-					text.inputEl.classList.add("default__margin")
 					text
 						.setPlaceholder("Pattern")
 						.setValue(this.plugin.settings[key].pattern)
@@ -152,7 +148,6 @@ class SettingTab extends PluginSettingTab {
 						});
 				})
 				.addText((text) => {
-					text.inputEl.classList.add("default__margin")
 					text
 						.setPlaceholder("Link")
 						.setValue(this.plugin.settings[key].link)
