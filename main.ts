@@ -46,7 +46,6 @@ export default class LinkMagicPlugin extends Plugin {
 		// @ts-expect-error, not typed
 		const editorView = editor.cm as EditorView;
 		let line = editor.getLine(curPos.line)
-		console.log(`Line: ${line}`)
 		let word = "";
 		let i = curPos.ch - 1;
 		while (i >= 0 && line[i] !== " ") {
@@ -55,7 +54,6 @@ export default class LinkMagicPlugin extends Plugin {
 		}
 		//We should check if we've already done the text replacement
 		if (RegExp("(\[.*\]\(.*\))", "g").test(word)) {
-			console.log(`We've already converted this! ${word}`)
 			return
 		}
 		Object.values(this.settings)
