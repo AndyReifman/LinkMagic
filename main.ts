@@ -56,22 +56,38 @@ export default class LinkMagicPlugin extends Plugin {
 		if (RegExp("(\[.*\]\(.*\))", "g").test(word)) {
 			return
 		}
+
 		Object.values(this.settings)
 			.filter(({ pattern, link }) => pattern && link)
 			.some(({ pattern, link }) => {
-				if (RegExp(pattern, "g").test(word)) {
-					let markdownLink = `[${word}](${link.replace("{pattern}", word)})`
-					editor.replaceRange(markdownLink, { line: curPos.line, ch: curPos.ch - word.length }, curPos);
+				const regex = RegExp(pattern, "g")
+				if (regex.test(word)) {
+					const enclosingRegex = /^(\()?(.*?)(\))?$/
+					let match = enclosingRegex.exec(word)
+					if (match) {
+						const startChar = match[1] || ""
+						const innerWord = match[2]
+						const endChar = match[3] || ""
+						let markdownLink = `${startChar}[${innerWord}](${link.replace("{pattern}", innerWord)})${endChar}`
+						editor.replaceRange(markdownLink, { line: curPos.line, ch: curPos.ch - word.length }, curPos);
+					}
 				}
 			})
 	}
 
 	handleEnter(editor: Editor, pos?: EditorPosition) {
-		//Get the current line position
+		// Get the current line position
 		let curPos = pos ? pos : editor.getCursor()
-		//Don't think we need to check if we're on the first line as this should only be called after enter
+		// Don't think we need to check if we're on the first line as this should only be called after enter
 		let lineAbove = editor.getLine(curPos.line - 1)
 		this.checkForMatch(editor, { line: curPos.line - 1, ch: lineAbove.length })
+	}
+
+	handleTab(editor: Editor, pos?: EditorPosition) {
+		//Remove all the white space
+		let curPos = pos ? pos : editor.getCursor()
+		editor.getLine(curPos.line).trimStart()
+
 	}
 
 	triggerSnippet(editor: Editor, evt: KeyboardEvent) {
@@ -81,7 +97,7 @@ export default class LinkMagicPlugin extends Plugin {
 				break;
 			}
 			case "Tab": {
-				// TODO: Add support for Tab replacement
+				this.handleTab(editor)
 				break;
 			}
 			case "Enter": {
