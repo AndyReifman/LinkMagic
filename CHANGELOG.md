@@ -1,3 +1,5 @@
+### 1.0.8 Aug 28, 2024
+ - Update README.md with a more verbose example
 ### 1.0.6 July 22, 2024
  - Update pattern matching to replace pattern surrounded by parenthesis without including the parenthesis
 ### 1.0.5 Apr 26, 2024
