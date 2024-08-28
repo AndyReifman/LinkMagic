@@ -16,6 +16,14 @@ Usage
 
 # Example
 
+## Configuring a Jira Link Replacer Rule
+
+To create a rule that automatically converts Jira issue keys into clickable links:
+
+  1. Create a New Rule: In the LinkMagic settings, add a new rule.
+  2. Define the Pattern: Specify the pattern that will trigger the replacement. For my example Jira instance issue keys, use the regular expression JIRA-[\d+] to match any text starting with "JIRA-" followed by one or more digits.
+  3. Set the Replacement: Determine the URL template to which the matched text will be replaced. For Jira, use https://jira.com/browse/{pattern}, where {pattern} will be replaced with the captured issue key.
+
 
 ![An image showing the settings page for LinkMagic with an example pattern](example.png)
 
