@@ -1,3 +1,5 @@
+### 1.0.9 Aug 20, 2025
+ - Allow Regex groups to be used in replacement
 ### 1.0.8 Aug 28, 2024
  - Update README.md with a more verbose example
 ### 1.0.6 July 22, 2024

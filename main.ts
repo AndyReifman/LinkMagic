@@ -1,4 +1,5 @@
 import { App, Editor, EditorPosition, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { replacePattern } from 'replacePattern';
 
 
 type PluginSettings = Record<string, { pattern: string, link: string }>;
@@ -68,7 +69,7 @@ export default class LinkMagicPlugin extends Plugin {
 						const startChar = match[1] || ""
 						const innerWord = match[2]
 						const endChar = match[3] || ""
-						let markdownLink = `${startChar}[${innerWord}](${link.replace("{pattern}", innerWord)})${endChar}`
+						let markdownLink = `${startChar}[${innerWord}](${replacePattern(link, regex, innerWord)})${endChar}`
 						editor.replaceRange(markdownLink, { line: curPos.line, ch: curPos.ch - word.length }, curPos);
 					}
 				}
