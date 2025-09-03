@@ -37,12 +37,12 @@ function findGroups(input: string, pattern: RegExp): string[][] {
 }
 
 /**
- * Replaces a substring {groupName} in the input string with the replacement
+ * Replaces all substrings {groupName} in the input string with the replacement
  * @param input
  * @param groupName 
  * @param replacement 
  * @returns The string with the replaced values
  */
 function replaceGroup(input: string, groupName: string, replacement: string): string {
-  return input.replace(`{${groupName}}`, replacement);
+  return input.replace(new RegExp(`\\{${groupName}\\}`, 'g'), replacement);
 }
