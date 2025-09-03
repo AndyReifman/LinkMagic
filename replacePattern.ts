@@ -1,4 +1,4 @@
-export function replacePattern(link: string, pattern: string, innerWord: string) {
+export function replacePattern(link: string, pattern: RegExp, innerWord: string) {
   const groups = findGroups(innerWord, pattern);
 
   const replacements = [["pattern", innerWord], ...groups];
@@ -8,8 +8,8 @@ export function replacePattern(link: string, pattern: string, innerWord: string)
   }, link);
 }
 
-function findGroups(innerWord: string, pattern: string): string[][] {
-  const matches = new RegExp(pattern, "g").exec(innerWord);
+function findGroups(innerWord: string, pattern: RegExp): string[][] {
+  const matches = pattern.exec(innerWord);
   if (!matches) {
     return [];
   }
