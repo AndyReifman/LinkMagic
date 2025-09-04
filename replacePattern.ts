@@ -23,6 +23,8 @@ export function replacePattern(target: string, pattern: RegExp, innerWord: strin
  * @returns An array of [groupName, replacement] tuples
  */
 function findGroups(input: string, pattern: RegExp): string[][] {
+  // Due to the global flag keeping track of the lastIndex, we need to reset the pattern here
+  pattern.lastIndex = 0;
   const matches = pattern.exec(input);
   if (!matches) {
     return [];
