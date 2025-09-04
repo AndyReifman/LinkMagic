@@ -27,6 +27,21 @@ To create a rule that automatically converts Jira issue keys into clickable link
 
 ![An image showing the settings page for LinkMagic with an example pattern](example.png)
 
+## Using RegExp groups
+
+RegExp groups are completely supported, by using the group number or name in the replacement link.
+For example, in a string `This is an example sentence where target-words-123456 will be replaced.` the pattern `target-(?<name>[a-zA-Z]+)-(?<number>[0-9]+)` allows the following replacements:
+
+| replacement | value |
+| ----------- | ----- |
+| `{0}` | "target-words-123456" |
+| `{1}` | "words" |
+| `{2}` | "123456" |
+| `{pattern}` | "target-words-123456" |
+| `{name}` | "words" |
+| `{number}` | "123456" |
+
+With the above pattern and a target link `https://example.com/{name}/{number}`, the example string from above would then become `This is an example sentence where [target-words-123456](https://example.com/words/123456) will be replaced.`.
 
 # Support and Feedback
 
