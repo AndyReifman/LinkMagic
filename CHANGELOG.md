@@ -1,3 +1,5 @@
+### 1.1.1 Sep 4, 2025
+ - Fixes a bug where RegExp with global modifier doesn't replace groups
 ### 1.1.0 Sep 3, 2025
  - Allow Regex groups to be used in replacement
 ### 1.0.8 Aug 28, 2024
